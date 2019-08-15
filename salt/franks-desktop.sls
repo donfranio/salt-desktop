@@ -69,7 +69,7 @@ franks-gui:
 
 franks-user:
   user.present:
-  - name: scherrer
+  - name: {{ salt['pillar.get']('local.frank.username') }}
   - fullname: Frank Scherrer
   - shell: /usr/bin/zsh
   - home: /home/scherrer
