@@ -69,10 +69,10 @@ franks-gui:
 
 franks-user:
   user.present:
-  - name: {{ salt['pillar.get']('local.frank.username') }}
+  - name: {{ pillar['frank']['username'] }}
   - fullname: Frank Scherrer
   - shell: /usr/bin/zsh
-  - home: /home/scherrer
+  - home: /home/{{ pillar['frank']['username'] }}
   - groups:
     - audio
     - cdrom
@@ -86,5 +86,14 @@ franks-user:
     - bluetooth
     - libvirt
     - libvirt-qemu
-
-
+  git.cloned:
+    - name: 'https://github.com/tobi-wan-kenobi/bumblebee-status.git'
+    - target: /home/{{ pillar['frank']['username'] }}/Software/github/bumblebee-status
+    - user: {{ pillar['frank']['username'] }}
+    - require:
+      - user: {{ pillar['frank']['username'] }}
+  file.symlink:
+    - name: /home/{{ pillar['frank']['username'] }}/Software/github/bumblebee-status/themes/firefox-dark-powerline.json
+    - target: /home/{{ pillar['frank']['username'] }}/.config/bumblebee-theme-firefox-dark-powerline.json
+    - require:
+      - user: {{ pillar['frank']['username'] }}
