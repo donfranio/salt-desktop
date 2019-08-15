@@ -8,8 +8,6 @@ docker:
     keyid: 0EBFCD88
     keyserver: keyserver.ubuntu.com
     file: /etc/apt/sources.list.d/docker.list
-  - require:
-    - pkg: gnupg
   pkg.installed:
     - pkgs:
       - docker-ce

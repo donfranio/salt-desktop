@@ -29,3 +29,10 @@ base:
       - task-laptop
       - traceroute
       - zsh
+
+xorg:
+  pkg.installed:
+    - pkgs:
+      - lightdm
+      - xfonts-unifont
+      - xorg
