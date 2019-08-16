@@ -3,9 +3,9 @@ franks-cli:
   - pkgs:
     - discover
     - gnupg
+    - gpgv2
     - ipcalc
     - jq
-    - khard
     - libvirt-dev
     - mutt
     - openvpn
@@ -17,15 +17,20 @@ franks-cli:
     - python-flake8
     - python-ldap
     - resolvconf
+    - rng-tools
     - shellcheck
     - tcpdump
     - telnet
     - texlive
     - vagrant
-    - vdirsyncer
     - zmap
 
 franks-gui:
+  pkgrepo.managed:
+  - humanname: PPA for i3-gaps
+  - name: deb http://ppa.launchpad.net/simon-monette/i3-gaps/ubuntu xenial main 
+  - keyserver: keyserver.ubuntu.com
+  - key_id: 0x280fd9217fc97329
   pkg.installed:
   - pkgs:
     - arandr
@@ -34,19 +39,23 @@ franks-gui:
     - compton
     - dirmngr
     - feh
-    - firefox-esr-l10n-de
+    - firefox
     - fonts-powerline
     - fonts-font-awesome
     - giggle
     - gparted
+    - gtk-chtheme
+    - gtk-theme-switch
     - i3
     - i3blocks
     - icedtea-netx
+    # For Rocket.chat client
+    - libappindicator1
     - libreoffice-calc
-    - libvirt-daemon-system
     - meld
     - mirage
     - mplayer-gui
+    - network-manager-gnome
     - nitrogen
     - python-netifaces
     - python-psutil
@@ -54,13 +63,12 @@ franks-gui:
     - rofi
     - sakura
     - thunar
+    - thunderbird
     - ttf-unifont
     - vim-gtk
     - vim-syntastic
     - virt-manager
     - w3m
-    - webext-browserpass
-    - webext-ublock-origin
     - xautolock
   service.running:
     - name: lightdm
@@ -84,8 +92,7 @@ franks-user:
     - plugdev
     - netdev
     - bluetooth
-    - libvirt
-    - libvirt-qemu
+    - libvirtd
   git.cloned:
     - name: 'https://github.com/tobi-wan-kenobi/bumblebee-status.git'
     - target: /home/{{ pillar['frank']['username'] }}/Software/github/bumblebee-status
