@@ -26,11 +26,6 @@ franks-cli:
     - zmap
 
 franks-gui:
-  pkgrepo.managed:
-  - humanname: PPA for i3-gaps
-  - name: deb http://ppa.launchpad.net/simon-monette/i3-gaps/ubuntu xenial main 
-  - keyserver: keyserver.ubuntu.com
-  - key_id: 0x280fd9217fc97329
   pkg.installed:
   - pkgs:
     - arandr
