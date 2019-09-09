@@ -6,8 +6,10 @@ franks-cli:
     - gpgv2
     - ipcalc
     - jq
+    - ldap-utils
     - libvirt-dev
     - mutt
+    - net-tools
     - openvpn
     - pandoc
     - pass
@@ -23,6 +25,8 @@ franks-cli:
     - telnet
     - texlive
     - vagrant
+    - vim-ctrlp
+    - vim-syntastic
     - zmap
 
 franks-gui:
@@ -44,31 +48,37 @@ franks-gui:
     - i3
     - i3blocks
     - icedtea-netx
+    - imagemagick
+    - khal
+    - khard
     # For Rocket.chat client
     - libappindicator1
+    - libnotify4
     - libreoffice-calc
     - meld
     - mirage
     - mplayer-gui
     - network-manager-gnome
     - nitrogen
+    - pavucontrol
+    - playerctl
     - python-netifaces
     - python-psutil
     - rdesktop
+    - remmina
     - rofi
     - sakura
     - thunar
     - thunderbird
     - ttf-unifont
+    - vdirsyncer
     - vim-gtk
-    - vim-syntastic
     - virt-manager
     - w3m
+    - webext-browserpass
     - xautolock
-  service.running:
-    - name: lightdm
-    - require:
-      - xorg
+    - xsel
+    - xul-ext-lightning
 
 franks-user:
   user.present:
@@ -87,15 +97,10 @@ franks-user:
     - plugdev
     - netdev
     - bluetooth
-    - libvirtd
+    - libvirt
   git.cloned:
     - name: 'https://github.com/tobi-wan-kenobi/bumblebee-status.git'
     - target: /home/{{ pillar['frank']['username'] }}/Software/github/bumblebee-status
     - user: {{ pillar['frank']['username'] }}
-    - require:
-      - user: {{ pillar['frank']['username'] }}
-  file.symlink:
-    - name: /home/{{ pillar['frank']['username'] }}/Software/github/bumblebee-status/themes/firefox-dark-powerline.json
-    - target: /home/{{ pillar['frank']['username'] }}/.config/bumblebee-theme-firefox-dark-powerline.json
     - require:
       - user: {{ pillar['frank']['username'] }}

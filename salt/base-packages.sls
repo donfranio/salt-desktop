@@ -19,7 +19,6 @@ base:
       - lvm2
       - mtr
       - ncurses-term
-      - netcat
       - nfs-common
       - rfkill
       - ssh
@@ -37,5 +36,4 @@ saltbase:
 xorg:
   pkg.installed:
     - pkgs:
-      - lightdm
       - xfonts-unifont
